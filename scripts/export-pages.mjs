@@ -33,6 +33,7 @@ const html = `<!doctype html>
     <meta name="description" content="Seven original computational design assignments presented in one public index.">
     <link rel="canonical" href="https://jzhang2468.github.io/final-assignment/">
     <link rel="icon" href="./favicon.svg">
+    <script src="./initial-scroll.js"></script>
     <link rel="stylesheet" href="./style.css">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Digital Object Atlas — Jinghan Zhang">
@@ -66,5 +67,9 @@ await cp(join(projectRoot, "public", "assignments"), join(pagesRoot, "assignment
 });
 await copyFile(join(projectRoot, "public", "og.png"), join(pagesRoot, "og.png"));
 await copyFile(join(projectRoot, "public", "favicon.svg"), join(pagesRoot, "favicon.svg"));
+await copyFile(
+  join(projectRoot, "public", "initial-scroll.js"),
+  join(pagesRoot, "initial-scroll.js"),
+);
 
 console.log(`GitHub Pages snapshot written to ${pagesRoot}`);

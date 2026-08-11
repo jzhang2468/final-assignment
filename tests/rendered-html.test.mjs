@@ -31,6 +31,7 @@ test("server-renders the complete seven-object atlas", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Digital Object Atlas — Jinghan Zhang<\/title>/i);
+  assert.match(html, /src=["']\/initial-scroll\.js["']/);
   assert.match(html, /Seven structures\./);
   assert.match(html, /One field/);
 
@@ -52,6 +53,7 @@ test("ships a project-subpath-safe GitHub Pages snapshot", async () => {
   const pagesHtml = await readFile(new URL("../docs/index.html", import.meta.url), "utf8");
 
   assert.match(pagesHtml, /href=["']\.\/style\.css["']/);
+  assert.match(pagesHtml, /src=["']\.\/initial-scroll\.js["']/);
   assert.match(pagesHtml, /src=["']\.\/assignments\/spatial-canvases/);
   assert.match(pagesHtml, /src=["']\.\/assignments\/temporal-structures/);
   assert.match(pagesHtml, /src=["']\.\/assignments\/relational-structure/);
@@ -59,6 +61,7 @@ test("ships a project-subpath-safe GitHub Pages snapshot", async () => {
 
   await Promise.all([
     access(new URL("../docs/.nojekyll", import.meta.url)),
+    access(new URL("../docs/initial-scroll.js", import.meta.url)),
     access(new URL("../docs/og.png", import.meta.url)),
     access(new URL("../docs/assignments/spatial-canvases/main.js", import.meta.url)),
     access(new URL("../docs/assignments/temporal-structures/events.csv", import.meta.url)),
@@ -67,4 +70,17 @@ test("ships a project-subpath-safe GitHub Pages snapshot", async () => {
     access(new URL("../docs/assignments/relational-structure/poll-app.js", import.meta.url)),
     access(new URL("../docs/assignments/relational-structure/chatbot-app.js", import.meta.url)),
   ]);
+
+  const pagesCss = await readFile(new URL("../docs/style.css", import.meta.url), "utf8");
+  const scrollGuard = await readFile(
+    new URL("../docs/initial-scroll.js", import.meta.url),
+    "utf8",
+  );
+
+  assert.doesNotMatch(pagesCss, /scroll-behavior:\s*smooth/);
+  assert.match(scrollGuard, /scrollRestoration\s*=\s*["']manual["']/);
+  assert.match(scrollGuard, /window\.location\.hash/);
+  assert.match(scrollGuard, /window\.addEventListener\(["']scroll["'],\s*resetToTop/);
+  assert.match(scrollGuard, /frame\.addEventListener\(["']load["'],\s*resetToTop/);
+  assert.doesNotMatch(scrollGuard, /setTimeout/);
 });
