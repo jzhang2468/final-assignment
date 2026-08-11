@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temporal Structures in D3.js</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <p class="course">Columbia GSAPP / Computational Design Workflows</p>
+        <h1>Waterfront Adaptation Timeline</h1>
+      </div>
+      <p class="meta">Digital Object 2: Temporal Structures</p>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="project-title">
+        <div>
+          <p class="eyebrow">Synthetic CSV dataset / D3.js temporal visualization</p>
+          <h2 id="project-title">A fictional timeline of overlapping design, ecology, infrastructure, and public programs.</h2>
+        </div>
+        <p>
+          This single D3 visualization adapts the class Gantt-style timeline example by changing the CSV file to a
+          synthetic dataset. Each band marks the duration of one fictional project phase, making it possible to compare
+          which temporal layers happen in parallel and which depend on earlier groundwork.
+        </p>
+      </section>
+
+      <section class="visualization" aria-label="D3 temporal structure visualization">
+        <div class="chart-heading">
+          <div>
+            <p class="eyebrow">2026-2042</p>
+            <h2>Phased Waterfront Climate Adaptation</h2>
+          </div>
+          <div class="legend-note">Hover over a band for details</div>
+        </div>
+        <div id="d3-canvas"></div>
+      </section>
+
+      <section class="reflection" aria-labelledby="reflection-title">
+        <h2 id="reflection-title">Temporal Structure Reflection</h2>
+        <p>
+          In my precedent study of <em>Excavating AI</em>, I could incorporate a temporal structure by mapping the
+          historical layers behind machine vision: early experiments, dataset collection, taxonomic systems, human
+          labeling labor, benchmark culture, and later public critique. Instead of presenting AI as a single finished
+          technology, the timeline would show how each stage leaves traces in the next, making bias visible as something
+          accumulated over time through repeated acts of classification.
+        </p>
+      </section>
+    </main>
+
+    <script src="d3.v7.min.js"></script>
+    <script src="timeline.js"></script>
+  </body>
+</html>

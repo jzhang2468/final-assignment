@@ -1,0 +1,39 @@
+id,name,role,age,department,friends,size,color
+2359,Walter Gropius,europe,1883,"German, 1883 - 1969",2,18.0,#1e4f9a
+7166,Ludwig Mies van der Rohe,americas,1886,"American, 1886 - 1969",2,18.0,#e21b2d
+4922,Gerrit Rietveld,europe,1888,"Dutch, 1888 - 1964",3,18.6,#1e4f9a
+35,Aino Aalto,europe,1894,"Finnish, 1894 - 1949",4,19.2,#1e4f9a
+2030,R. Buckminster Fuller,americas,1895,"American, 1895 - 1983",4,19.2,#e21b2d
+2899,Pierre Jeanneret,europe,1896,"Swiss, 1896 - 1967",6,20.1,#1e4f9a
+34,Alvar Aalto,europe,1898,"Finnish, 1898 - 1976",6,20.1,#1e4f9a
+2964,Louis I. Kahn,americas,1901,"American, 1901 - 1974",8,20.9,#e21b2d
+43745,Luis Barragán,americas,1902,"Mexican, 1902 - 1988",7,20.6,#e21b2d
+769,Marcel Breuer,americas,1902,"American, 1902 - 1981",7,20.6,#e21b2d
+2927,Philip Johnson,americas,1906,"American, 1906 - 2005",7,20.6,#e21b2d
+1671,Charles Eames,americas,1907,"American, 1907 - 1978",7,20.6,#e21b2d
+8103,Oscar Niemeyer,americas,1907,"Brazilian, 1907 - 2012",7,20.6,#e21b2d
+5103,Eero Saarinen,americas,1910,"American, 1910 - 1961",6,20.1,#e21b2d
+1672,Ray Eames,americas,1912,"American, 1912 - 1988",8,20.9,#e21b2d
+44188,Lina Bo Bardi,americas,1914,"Brazilian, 1914 - 1992",6,20.1,#e21b2d
+531,Harry Bertoia,americas,1915,"American, 1915 - 1978",6,20.1,#e21b2d
+22938,Jørn Utzon,europe,1918,"Danish, 1918 - 2008",6,20.1,#1e4f9a
+5076,Paul Rudolph,americas,1918,"American, 1918 - 1997",6,20.1,#e21b2d
+132545,Anne Tyng,americas,1920,"American, 1920 - 2011",6,20.1,#e21b2d
+22897,Kevin Roche,americas,1922,"American, 1922 - 2019",4,19.2,#e21b2d
+6132,Robert Venturi,americas,1925,"American, 1925 - 2018",5,19.7,#e21b2d
+2108,Frank O. Gehry,americas,1929,"American, 1929 - present",8,20.9,#e21b2d
+7661,Aldo Rossi,europe,1931,"Italian, 1931 - 1997",9,21.3,#1e4f9a
+8216,Denise Scott Brown,americas,1931,"American, 1931 - present",9,21.3,#e21b2d
+36,Eero Aarnio,europe,1932,"Finnish, 1932 - present",8,20.9,#1e4f9a
+7986,Cedric Price,europe,1934,"British, 1934 - 2003",8,20.9,#1e4f9a
+2308,Michael Graves,americas,1934,"American, 1934 - 2015",8,20.9,#e21b2d
+3910,Richard Meier,americas,1934,"American, 1934 - present",8,20.9,#e21b2d
+7569,Norman Foster,europe,1935,"British, 1935 - present",9,21.3,#1e4f9a
+8988,Renzo Piano,europe,1937,"Italian, 1937 - present",9,21.3,#1e4f9a
+7055,Tadao Ando,asia,1941,"Japanese, 1941 - present",5,19.7,#e6b422
+47230,Peter Zumthor,europe,1943,"Swiss, 1943 - present",4,19.2,#1e4f9a
+6956,Rem Koolhaas,europe,1944,"Dutch, 1944 - present",4,19.2,#1e4f9a
+7527,Daniel Libeskind,americas,1946,"American, 1946 - present",4,19.2,#e21b2d
+6953,Zaha Hadid,europe,1950,"British, 1950 - 2016",4,19.2,#1e4f9a
+44528,Kengo Kuma,asia,1954,"Japanese, 1954 - present",2,18.0,#e6b422
+8958,Kazuyo Sejima,asia,1956,"Japanese, 1956 - present",2,18.0,#e6b422

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive D3 network of architectural generations derived from MoMA collection metadata, extended with a Mapbox canvas of related NYC landmarks.">
+  <title>Architectural Generations | MoMA Collection Data</title>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.13.3/mapbox-gl.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <a class="wordmark" href="#" aria-label="Architectural Generations home"><span></span>AG / 01</a>
+      <p>MOMA COLLECTION DATA / 2026.07</p>
+      <button id="reset" type="button">Reset view</button>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">Architecture / Generational proximity</p>
+      <p class="plate-number" aria-hidden="true">38</p>
+      <h1 id="page-title">Built across<br>generations.</h1>
+      <p class="dek">A relational portrait of architects represented in MoMA's collection. Each line joins two people born within six years of one another.</p>
+      <div class="intro-note">
+        <span>1883-1956</span>
+        <p>Seventy-three years of architectural thought, read horizontally through time.</p>
+      </div>
+    </section>
+
+    <section class="network-card" aria-label="Interactive architect birth-cohort network">
+      <div class="network-head">
+        <div>
+          <p class="kicker">Fig. 01 / Cohort network</p>
+          <p class="instruction">Drag nodes / Scroll to zoom / Drag field to pan</p>
+        </div>
+        <div class="view-controls" aria-label="Graph layout">
+          <span>View</span>
+          <button class="view-button active" data-view="timeline" type="button">Timeline</button>
+          <button class="view-button" data-view="network" type="button">Network</button>
+        </div>
+        <div class="metrics" aria-live="polite">
+          <span><strong id="node-count">--</strong> architects</span>
+          <span><strong id="edge-count">--</strong> links</span>
+        </div>
+      </div>
+
+      <div id="network" role="img" aria-label="Force-directed graph connecting architects born within six years of one another">
+        <div class="loading">Mapping the network...</div>
+        <div id="tooltip" class="tooltip" role="status" aria-hidden="true"></div>
+      </div>
+
+      <div class="legend" aria-label="Geographic region legend">
+        <span><i class="americas"></i>Americas</span>
+        <span><i class="europe"></i>Europe</span>
+        <span><i class="asia"></i>Asia</span>
+        <span class="legend-note">Node size = cohort connections / Link weight = birth-year proximity</span>
+      </div>
+
+      <div class="method-strip">
+        <p><b>Reading the graph</b></p>
+        <p>Position shows birth year in Timeline view. Proximity in Network view is simulated from the links.</p>
+        <p>The graph does not claim collaboration, influence, mentorship, or shared style.</p>
+      </div>
+    </section>
+
+    <section class="map-card" aria-labelledby="map-title">
+      <div class="map-head">
+        <div>
+          <p class="kicker">Fig. 02 / Geospatial extension</p>
+          <h2 id="map-title">MoMA architects as New York landmarks.</h2>
+        </div>
+        <div class="map-metrics" aria-live="polite">
+          <span><strong id="map-feature-count">--</strong> footprints</span>
+          <span><strong id="map-architect-count">--</strong> matched architects</span>
+        </div>
+      </div>
+
+      <div class="map-copy">
+        <p>This map does not add a second relational diagram. It extends the existing MoMA cohort network into geography by filtering NYC Landmark Preservation Commission footprints to architects already present in <code>nodes.csv</code>.</p>
+        <p>Only the MoMA architects with matching designated New York landmarks are shown: Mies van der Rohe, Marcel Breuer, Philip Johnson, Eero Saarinen, Paul Rudolph, and Kevin Roche.</p>
+      </div>
+
+      <div class="map-controls" aria-label="Map filters">
+        <label>
+          <span>Architect</span>
+          <select id="architect-filter">
+            <option value="all">All matched MoMA architects</option>
+          </select>
+        </label>
+        <button id="map-reset" type="button">Fit landmarks</button>
+      </div>
+
+      <div class="map-shell">
+        <div id="landmark-map" role="img" aria-label="Mapbox canvas showing NYC landmark footprints by architects from the MoMA cohort network"></div>
+        <div class="map-status">
+          <span id="map-status-text">Loading geospatial structure...</span>
+          <span>Source / NYC LPC individual landmark boundaries</span>
+        </div>
+      </div>
+
+      <div id="map-legend" class="map-legend" aria-label="Map legend"></div>
+
+      <div class="geo-method">
+        <p><b>Project use</b></p>
+        <p>A geospatial structure could connect archival or collection metadata to the places where architectural ideas enter civic memory. For my interests, this could become a fieldwork index: architects, buildings, images, interviews, and observations can be mapped together so that a relational dataset becomes a situated urban reading.</p>
+      </div>
+    </section>
+
+    <section class="poll-card" aria-labelledby="poll-title">
+      <div class="poll-head">
+        <div>
+          <p class="kicker">Fig. 03 / Engagement poll</p>
+          <h2 id="poll-title">What should this relational atlas collect next?</h2>
+        </div>
+        <p class="poll-status" id="poll-status" role="status">Checking Firebase setup...</p>
+      </div>
+
+      <div class="poll-copy">
+        <p>This poll turns the project outward by asking viewers which additional layer would make the architectural network more useful as a research interface.</p>
+        <p>Only anonymous aggregate vote totals are saved. The poll does not ask for names, emails, location, or written comments.</p>
+      </div>
+
+      <div class="poll-options" aria-label="Engagement poll choices">
+        <button class="poll-option" type="button" data-option="images">
+          <span class="poll-option-title">Archival images</span>
+          <span class="poll-option-text">Drawings, model photos, installation views, and collection images.</span>
+          <span class="poll-option-count"><strong id="count-images">0</strong> votes</span>
+        </button>
+        <button class="poll-option" type="button" data-option="voices">
+          <span class="poll-option-title">Oral histories</span>
+          <span class="poll-option-text">Interview clips, lecture traces, and firsthand accounts.</span>
+          <span class="poll-option-count"><strong id="count-voices">0</strong> votes</span>
+        </button>
+        <button class="poll-option" type="button" data-option="materials">
+          <span class="poll-option-title">Material timelines</span>
+          <span class="poll-option-text">Construction systems, materials, and techniques by decade.</span>
+          <span class="poll-option-count"><strong id="count-materials">0</strong> votes</span>
+        </button>
+        <button class="poll-option" type="button" data-option="fieldwork">
+          <span class="poll-option-title">Fieldwork routes</span>
+          <span class="poll-option-text">Walking paths that connect mapped landmarks to observations.</span>
+          <span class="poll-option-count"><strong id="count-fieldwork">0</strong> votes</span>
+        </button>
+      </div>
+
+      <div class="poll-method">
+        <p><b>Total responses</b> <span id="poll-total">0</span></p>
+        <p><b>Ethical note</b> Engagement data can help a project respond to its audience, but it can also become extractive when it identifies people or hides its purpose. This poll keeps the question low-stakes and stores only summed counts.</p>
+      </div>
+    </section>
+
+    <section class="agent-card" aria-labelledby="agent-title">
+      <div class="agent-head">
+        <div>
+          <p class="kicker">Fig. 04 / Research agent</p>
+          <h2 id="agent-title">Ask the atlas to think with you.</h2>
+        </div>
+        <p class="agent-status" id="agent-status" role="status">Checking secure Firebase agent...</p>
+      </div>
+
+      <div class="agent-copy">
+        <p>This chatbot is framed as a research guide for the relational atlas. Instead of replacing the graph, it can help a viewer ask what a cohort, landmark, or missing archive layer might mean.</p>
+        <p>The browser sends the question to Firebase, then Firebase calls OpenAI from the server. That keeps the API key out of GitHub Pages and allows the project to log lightweight usage without collecting names or emails.</p>
+      </div>
+
+      <div class="agent-shell" aria-label="Research chatbot">
+        <div class="agent-messages" id="agent-messages" aria-live="polite">
+          <div class="agent-message is-agent">
+            <span class="agent-message-label">Atlas agent</span>
+            <p>Ask about the cohort network, the mapped landmarks, or what kind of archive layer could be collected next.</p>
+          </div>
+        </div>
+
+        <form class="agent-form" id="agent-form">
+          <label for="agent-input">Question</label>
+          <div class="agent-input-row">
+            <input id="agent-input" name="message" type="text" maxlength="420" autocomplete="off" placeholder="Ask a research question..." disabled>
+            <button id="agent-send" type="submit" disabled>Ask</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="agent-method">
+        <p><b>Project use</b></p>
+        <p>I would use this agent approach as a conversational layer beside the visualization: it can translate a viewer's question into a path through the dataset, suggest what evidence is missing, and connect poll responses to future fieldwork or archive collection priorities.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>Sources: <a href="https://github.com/MuseumofModernArt/collection" target="_blank" rel="noreferrer">MoMA Collection dataset</a> / CC0 / Retrieved 20 July 2026. <a href="https://services5.arcgis.com/Oos4pNA2538iVFA1/ArcGIS/rest/services/Ind_Landmark_Lots_POLY/FeatureServer" target="_blank" rel="noreferrer">NYC LPC landmark boundary service</a> / Retrieved 22 July 2026.</p>
+      <p>DATA / SPACE / TIME</p>
+    </footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.13.3/mapbox-gl.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-functions.js"></script>
+  <script src="mapbox-token.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="app.js"></script>
+  <script src="geo-map.js"></script>
+  <script src="poll-app.js"></script>
+  <script src="chatbot-app.js"></script>
+</body>
+</html>

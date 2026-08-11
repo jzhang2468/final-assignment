@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive p5.js and Three.js spatial canvases themed as an abstract architecture archive.">
+  <title>Abstract Architecture Archive</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <main>
+    <header class="site-intro">
+      <p class="course-line">Spatial Canvases / p5.js + Three.js</p>
+      <h1>Abstract Architecture Archive</h1>
+      <p>
+        Four spatial studies imagine an archive as a navigable architectural
+        system: interior corridors, atriums, vaults, structural frames, material
+        shelves, moving index marks, and drawings that behave like living plans.
+      </p>
+    </header>
+
+    <section class="canvas-section" aria-labelledby="atrium-title">
+      <div class="section-copy">
+        <span>3D-01</span>
+        <h2 id="atrium-title">Archive Atrium</h2>
+        <p>
+          Travel inside a long archive atrium with walls, beams, columns,
+          mezzanines, stairs, shelves, light wells, and a moving camera path.
+        </p>
+      </div>
+      <div id="three-archive-atrium" class="canvas-shell three-shell" aria-label="Three.js orbiting abstract architecture archive"></div>
+    </section>
+
+    <section class="canvas-section" aria-labelledby="vault-title">
+      <div class="section-copy">
+        <span>3D-02</span>
+        <h2 id="vault-title">Material Vault</h2>
+        <p>
+          Move through a foggy material vault lined with ribs, display cases,
+          shelves, section planes, fragments, and shifting inspection light.
+        </p>
+      </div>
+      <div id="three-material-vault" class="canvas-shell three-shell" aria-label="Three.js foggy material archive visualization"></div>
+    </section>
+
+    <section class="canvas-section" aria-labelledby="catalogue-title">
+      <div class="section-copy">
+        <span>2D-01</span>
+        <h2 id="catalogue-title">Plan Catalogue</h2>
+        <p>
+          A static p5.js floor plan organizes rooms around a central atrium with
+          corridors, doors, stairs, section marks, labels, north arrow, and scale.
+        </p>
+      </div>
+      <div id="p5-plan-catalogue" class="canvas-shell p5-shell" aria-label="p5.js static architectural plan catalogue"></div>
+    </section>
+
+    <section class="canvas-section" aria-labelledby="index-title">
+      <div class="section-copy">
+        <span>2D-02</span>
+        <h2 id="index-title">Index Drift</h2>
+        <p>
+          An animated p5.js catalogue field lets the cursor act as an archival
+          lens, pulling labels, dimensions, and drawing fragments into focus.
+        </p>
+      </div>
+      <div id="p5-index-drift" class="canvas-shell p5-shell" aria-label="p5.js animated architecture archive index"></div>
+    </section>
+
+    <section class="note" aria-labelledby="note-title">
+      <h2 id="note-title">Design Interest</h2>
+      <p>
+        The theme is an interactive abstract architecture archive. I am using
+        code to treat architectural records as inhabitable material: plans have
+        circulation, fragments become rooms, labels become wayfinding, and the
+        archive becomes a building you can move through.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
