@@ -34,6 +34,7 @@ test("server-renders the complete seven-object atlas", async () => {
   assert.match(html, /src=["']\/initial-scroll\.js["']/);
   assert.match(html, /Seven structures\./);
   assert.match(html, /One field/);
+  assert.doesNotMatch(html, /class=["']design-priorities["']/);
 
   for (const id of objectIds) {
     assert.match(html, new RegExp(`id=["']${id}["']`));
@@ -58,6 +59,7 @@ test("ships a project-subpath-safe GitHub Pages snapshot", async () => {
   assert.match(pagesHtml, /src=["']\.\/assignments\/temporal-structures/);
   assert.match(pagesHtml, /src=["']\.\/assignments\/relational-structure/);
   assert.doesNotMatch(pagesHtml, /src=["']\/assignments\//);
+  assert.doesNotMatch(pagesHtml, /class=["']design-priorities["']/);
 
   await Promise.all([
     access(new URL("../docs/.nojekyll", import.meta.url)),

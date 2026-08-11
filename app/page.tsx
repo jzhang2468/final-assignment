@@ -126,24 +126,6 @@ const objects: DigitalObject[] = [
   },
 ];
 
-const priorities = [
-  {
-    number: "01",
-    title: "Orientation",
-    text: "A numbered index and repeated labels make seven different assignments easy to navigate.",
-  },
-  {
-    number: "02",
-    title: "Preservation",
-    text: "Every original HTML, CSS, JavaScript, and data file is embedded unchanged from its submitted GitHub repository.",
-  },
-  {
-    number: "03",
-    title: "Restraint",
-    text: "The outer page uses neutral spacing and rules so each assignment keeps its own visual identity.",
-  },
-];
-
 export default function Home() {
   return (
     <main>
@@ -175,22 +157,6 @@ export default function Home() {
             <span>07 objects</span>
             <span>03 original repositories</span>
           </div>
-        </div>
-      </section>
-
-      <section className="design-priorities" id="design">
-        <div className="section-heading">
-          <p className="eyebrow">Design system / ordered priorities</p>
-          <h2>One frame. Seven original assignments.</h2>
-        </div>
-        <div className="priority-grid">
-          {priorities.map((priority) => (
-            <article key={priority.number}>
-              <span>{priority.number}</span>
-              <h3>{priority.title}</h3>
-              <p>{priority.text}</p>
-            </article>
-          ))}
         </div>
       </section>
 
